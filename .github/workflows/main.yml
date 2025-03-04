@@ -3,29 +3,32 @@ name: Windows Build Test
 on:
   push:
     branches:
-      - main  # যখন main ব্রাঞ্চে push হবে তখন রান করবে
+      - main  
   pull_request:
     branches:
-      - main  # যখন কেউ PR করবে তখন রান করবে
+      - main  
 
 jobs:
   build:
-    runs-on: windows-latest  # Windows Runner ব্যবহার করা হচ্ছে
+    runs-on: windows-latest  
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2  # রিপোজিটরি ক্লোন করবে
+        uses: actions/checkout@v3  
 
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # নোডজে ইনস্টল করবে (কোটেশন বাদ দিন)
+          node-version: 18  
+
+      - name: Check Files
+        run: dir  # Windows কমান্ড দিয়ে ফাইলের তালিকা দেখাবে
 
       - name: Install Dependencies
-        run: npm install  # প্রজেক্ট ডিপেন্ডেন্সি ইনস্টল
+        run: npm install  
 
       - name: Run Tests
-        run: npm test  # টেস্ট রান করবে (যদি থাকে)
+        run: npm test  
 
       - name: Build Project
-        run: npm run build  # প্রজেক্ট বিল্ড করবে
+        run: npm run build  
