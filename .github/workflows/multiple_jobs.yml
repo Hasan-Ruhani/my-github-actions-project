@@ -1,0 +1,26 @@
+name: Multiple-Job Workflows
+
+on: [push, pull_request]
+
+jobs:
+    test:
+        runs-on: ubantu-latest   # run this file in ubantu server
+        steps: 
+            - name: Checkout code     # get all latest code that I change in my local environment
+              uses: actions/checkout@v3
+            - name: Print Hello World
+              run: echo "Hello World"
+
+    build:
+        runs-on: ubantu-latest
+        needs: test          # first complete test job then run this build job. Its called dependency
+        steps: 
+            - name: Print test2
+              run: echo "Here are the test2"
+
+    deploy:
+        runs-on: ubantu-latest
+        needs: [test, build]
+        steps: 
+            - name: Print deploy
+              run: echo "Deploy complete"
