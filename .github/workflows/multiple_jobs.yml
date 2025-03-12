@@ -15,7 +15,7 @@ jobs:
               run: echo "Hello World"
             - name: Print the Secrets
               run: |                   # print multiple line
-                echo "THe secret is: $SECRET_VAR"
+                echo "THe secret is: $SECRETS_VAR"
                 echo "THe variable is: $DEBUG"
 
     build:
