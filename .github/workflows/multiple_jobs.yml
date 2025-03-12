@@ -6,7 +6,7 @@ jobs:
     test:
         runs-on: ubuntu-latest   # run this file in ubuntu server
         env:                     # set env or any secret file in git ripository > settings > Secret and Variables
-            SECRETS_VAR: ${{ secrets.SECRETS_VAR }}
+            SECRETS_VAR: ${{ secrets.SECRET_VAR }}
             DEBUG: ${{ vars.DEBUG}}
         steps: 
             - name: Checkout code     # get all latest code that I change in my local environment
@@ -15,7 +15,7 @@ jobs:
               run: echo "Hello World"
             - name: Print the Secrets
               run: |                   # print multiple line
-                echo "THe secret is: $SECRETS_VAR"
+                echo "THe secret is: $SECRET_VAR"
                 echo "THe variable is: $DEBUG"
 
     build:
